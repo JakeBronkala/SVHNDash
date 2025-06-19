@@ -3,6 +3,6 @@ numpy
 pillow
 matplotlib
 scikit-learn
+tensorflow
 h5py
 gdown
-tensorflow==2.12.0

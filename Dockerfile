@@ -1,5 +1,4 @@
 # Use Python base image
-# Use Python base image
 FROM python:3.9-slim
 
 # Set environment variables
@@ -13,12 +12,14 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all files
+# Copy the model folder explicitly
+COPY model /app/model
+
+# Copy all other files
 COPY . .
 
 # Expose Streamlit default port
 EXPOSE 8501
 
 # Run the Streamlit app on port 8501, listen on all interfaces
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
-
+CMD ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
